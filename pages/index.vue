@@ -1,5 +1,14 @@
 <template>
-  <Tutorial/>
+  <div class="page">
+    TOPぺーじ
+    <div class="">
+      <!-- KV -->
+    </div>
+    <div>
+      <!-- contents -->
+    </div>
+  </div>
+  <!-- <Tutorial/> -->
 </template>
 
 <script lang="ts">
