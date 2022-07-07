@@ -12,3 +12,10 @@ export interface Accordion {
   title: string;
   contents: AccordionContents;
 }
+
+export interface Todo {
+  id: number
+  title: string
+  description: string
+  done: boolean
+}

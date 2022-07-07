@@ -11,6 +11,7 @@
             <div
               class="
                 py-10
+                pl-6
                 accordion-title
                 border-t border-solid border-black
                 text-3xl

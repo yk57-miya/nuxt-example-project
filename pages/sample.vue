@@ -10,14 +10,46 @@
           @click="handleToggle"/>
       </div>
     </div>
+    <div class="mt-10">
+      <p class="text-2xl font-bold">・TODOリスト</p>
+      <div>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>TITLE</th>
+          <th>DONE</th>
+        </tr>
+        <tr v-for="todo in todos" :key="todo.id">
+          <td>{{ todo.id }}</td>
+          <td>{{ todo.title }}</td>
+          <td v-if="todo.done">✔</td>
+          <td v-else></td>
+        </tr>
+      </table>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 import Accordion from '@/components/Accordion.vue'
+import { TodoStore } from '@/store'
 
 export default Vue.extend({
+  async asyncData({ error }) {
+    console.log(123,TodoStore.fetchTodos());
+    await TodoStore.fetchTodos()
+    // try {
+    //   await TodoStore.fetchTodos()
+    // } catch (e) {
+    //   console.log(13,e)
+    //   error({
+    //     // statusCode: e.response.status,
+    //     // message: e.response.message
+    //   })
+    // }
+  },
   components: { Accordion },
   data() {
     const AccordionLists = [
@@ -75,6 +107,11 @@ export default Vue.extend({
   },
   created() {
     this.isOpened = Array(this.AccordionLists.length).fill(false);
+  },
+  computed: {
+    todos() {
+      return TodoStore.getTodos
+    }
   },
   methods: {
     handleToggle(i: any) {
